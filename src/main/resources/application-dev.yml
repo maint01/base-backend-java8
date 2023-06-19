@@ -1,0 +1,56 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/hackathon?serverTimezone=GMT%2B7
+    username: hackathon
+    password: hackathon
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+      max-lifetime: 2000000
+      idle-timeout: 30000
+      minimum-idle: 5
+      maximum-pool-size: 100
+
+  #config hibernate
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  #config upload
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: notification.test.hrm01@gmail.com
+    password: wmmohxyduatnaunt
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+application:
+  mail:
+    sender-name: hackathon
+  jwt:
+    secret-key: d5d874b3-0470-4b77-8b32-789f10616002d5d874b3-0470-4b77-8b32-789f10616002d5d874b3-0470-4b77-8b32-789f10616002d5d874b3-0470-4b77-8b32-789f10616002
+    expiration-token: 86400000
+    expiration-remember-me: 2592000000
